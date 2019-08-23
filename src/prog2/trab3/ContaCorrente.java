@@ -52,15 +52,21 @@ public class ContaCorrente {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor inválido");
         }
-        setSaldo(getSaldo() + valor);
+        this.setSaldo(this.getSaldo() + valor);
     }
 
-    public void transferir(double valor, ContaCorrente contraDestino) {
-
+    public void transferir(double valor, ContaCorrente contaDestino) {
+        if (valor <= 0 || this.getSaldo() <= valor) {
+            throw new IllegalArgumentException("Valor inválido");
+        }
+        contaDestino.receberTransferencia(valor, this);
+        this.setSaldo(this.getSaldo() - valor);
     }
 
     public void receberTransferencia(double valor, ContaCorrente origem) {
-
+        if (valor <= 0 || this.getSaldo() <= valor) {
+            throw new IllegalArgumentException("Valor inválido");
+        }
+        this.setSaldo(this.getSaldo() + valor);
     }
-
 }
