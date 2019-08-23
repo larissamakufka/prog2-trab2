@@ -6,7 +6,7 @@ public class ContaCorrente {
 
     private int numero;
     private int agencia;
-    private List<Cliente> cliente;
+    private Cliente cliente;
     private double saldo;
 
     public int getNumero() {
