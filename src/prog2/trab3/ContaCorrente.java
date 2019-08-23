@@ -42,11 +42,10 @@ public class ContaCorrente {
     }
 
     public void sacar(double valor) {
-        if (valor <= 0) {
+        if (valor <= 0 || getSaldo() <= valor) {
             throw new IllegalArgumentException("Valor inválido");
-        } else if (getSaldo() >= valor) {
-            setSaldo(getSaldo() - valor);
         }
+        setSaldo(getSaldo() - valor);
     }
 
     public void depositar(double valor) {
