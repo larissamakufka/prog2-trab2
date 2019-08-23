@@ -42,19 +42,26 @@ public class ContaCorrente {
     }
 
     public void sacar(double valor) {
-        
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor inválido");
+        } else if (getSaldo() >= valor) {
+            setSaldo(getSaldo() - valor);
+        }
     }
 
     public void depositar(double valor) {
-        
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor inválido");
+        }
+        setSaldo(getSaldo() + valor);
     }
 
     public void transferir(double valor, ContaCorrente contraDestino) {
-        
+
     }
 
     public void receberTransferencia(double valor, ContaCorrente origem) {
-        
+
     }
-    
+
 }
