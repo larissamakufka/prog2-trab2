@@ -25,12 +25,12 @@ public class ContaCorrente {
         this.agencia = agenda;
     }
 
-    public List<Cliente> getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void addCliente(Cliente cliente) {
-        this.cliente.add(cliente);
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public double getSaldo() {
