@@ -19,12 +19,14 @@ public class Operacao {
     }
     
     public void sacar(){
-        this.setOperacao(operacaosacar);
-        setSaldo(getSaldo() - valor);
+        this.tipo = TipoOperacao.SAIDA;
+        conta.setOperacao(this);
+        conta.setSaldo(conta.getSaldo() - valor);
     }
     
     public void depositar(){
-        this.setOperacao(operacaodepositar);
-        this.setSaldo(this.getSaldo() + valor);
+        this.tipo = TipoOperacao.ENTRADA;
+        conta.setOperacao(this);
+        conta.setSaldo(conta.getSaldo() + valor);
     }
 }

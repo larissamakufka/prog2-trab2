@@ -12,6 +12,13 @@ public class ContaCorrente {
     private ArrayList<Operacao> operacao = null;
     private ArrayList<OperacaoTransferencia> operacaoT = null;
 
+    public ContaCorrente(int numero, int agencia, Cliente cliente, double saldo) {
+        this.numero = numero;
+        this.agencia = agencia;
+        this.cliente = cliente;
+        this.saldo = saldo;
+    }    
+    
     public ArrayList<OperacaoTransferencia> getOperacaoT() {
         return operacaoT;
     }
@@ -73,6 +80,7 @@ public class ContaCorrente {
             throw new IllegalArgumentException("Valor inválido");
         }
         Operacao operacaosacar = new Operacao(valor, this.getSaldo(), TipoOperacao.SAIDA, this, new Date(System.currentTimeMillis()));
+        operacaosacar.sacar();
     }
 
     public void depositar(double valor) {
@@ -80,7 +88,7 @@ public class ContaCorrente {
             throw new IllegalArgumentException("Valor inválido");
         }
         Operacao operacaodepositar = new Operacao(valor, this.getSaldo(), TipoOperacao.ENTRADA, this, new Date(System.currentTimeMillis()));
-        
+        operacaodepositar.depositar();
     }
 
     public void transferir(double valor, ContaCorrente contaDestino) {

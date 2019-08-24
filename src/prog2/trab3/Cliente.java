@@ -11,10 +11,18 @@ public class Cliente {
 
     public ArrayList<ContaCorrente> getConta() {
         return conta;
-    }
+    }    
 
     public void setConta(ContaCorrente conta) {
         this.conta.add(conta);
+    }
+    
+    public ContaCorrente obterConta(int numeroConta){
+        for(int i = 0; i < conta.size() - 1; i++){
+            if (conta.get(i).getNumero() == numeroConta)
+                return conta.get(i);
+        }
+        return null;
     }
 
     public String getNome() {
