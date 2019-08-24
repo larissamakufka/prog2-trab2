@@ -1,6 +1,7 @@
 package prog2.trab3;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ContaCorrente {
 
@@ -68,21 +69,18 @@ public class ContaCorrente {
     }
 
     public void sacar(double valor) {
-        if (valor <= 0 || getSaldo() <= valor) {
+        if (valor <= 0 || this.getSaldo() <= valor) {
             throw new IllegalArgumentException("Valor inválido");
         }
-        Operacao operacaosacar = new Operacao();
-        this.setOperacao(operacaosacar);
-        setSaldo(getSaldo() - valor);
+        Operacao operacaosacar = new Operacao(valor, this.getSaldo(), TipoOperacao.SAIDA, this, new Date(System.currentTimeMillis()));
     }
 
     public void depositar(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor inválido");
         }
-        Operacao operacaodepositar = new Operacao();
-        this.setOperacao(operacaodepositar);
-        this.setSaldo(this.getSaldo() + valor);
+        Operacao operacaodepositar = new Operacao(valor, this.getSaldo(), TipoOperacao.ENTRADA, this, new Date(System.currentTimeMillis()));
+        
     }
 
     public void transferir(double valor, ContaCorrente contaDestino) {
