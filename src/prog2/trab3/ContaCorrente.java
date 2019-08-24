@@ -88,7 +88,7 @@ public class ContaCorrente {
             throw new IllegalArgumentException("Valor inválido");
         }
         
-        OperacaoTransferencia operacaotransfere = new OperacaoTransferencia();
+        OperacaoTransferencia operacaotransfere = new OperacaoTransferencia(valor, this.getSaldo(), TipoOperacao.ENTRADA, this, new Date(System.currentTimeMillis()));
         contaDestino.setOperacaoT(operacaotransfere);
 
         contaDestino.receberTransferencia(valor, this);
@@ -97,7 +97,7 @@ public class ContaCorrente {
 
     private void receberTransferencia(double valor, ContaCorrente origem) {
         
-        OperacaoTransferencia operacaotransfere = new OperacaoTransferencia();
+        OperacaoTransferencia operacaotransfere = new OperacaoTransferencia(valor, this.getSaldo(), TipoOperacao.SAIDA, this, new Date(System.currentTimeMillis()));
         origem.setOperacaoT(operacaotransfere);
         
         origem.setSaldo(origem.getSaldo() + valor);
